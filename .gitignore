@@ -1,0 +1,44 @@
+# Compiled output
+/dist
+/tmp
+/out-tsc
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDE
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.production
+
+# IDE and Editor files
+*.sublime-workspace
+*.sublime-project
+.atom
+
+# Testing
+/coverage
+.nyc_output
+
+# Build artifacts
+*.js.map
+*.css.map

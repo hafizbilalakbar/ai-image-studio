@@ -1,0 +1,60 @@
+<section class="careers-hero">
+  <div class="hero-bg-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="badge-dot"></span>Careers</div>
+      <h1>Join Our <span class="text-gradient">Team</span></h1>
+      <p class="hero-subtitle">Help us build the future of AI-powered image editing. We're always looking for talented individuals.</p>
+    </div>
+  </div>
+</section>
+
+<section class="careers-section">
+  <div class="container">
+    <div class="careers-intro">
+      <h2>Why Work With Us?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <app-icon [name]="'globe'" [size]="32" [color]="'#7c3aed'"></app-icon>
+          <h3>Remote-First</h3>
+          <p>Work from anywhere in the world with flexible hours.</p>
+        </div>
+        <div class="benefit-card">
+          <app-icon [name]="'trending-up'" [size]="32" [color]="'#7c3aed'"></app-icon>
+          <h3>Growth Opportunities</h3>
+          <p>Continuous learning and career development support.</p>
+        </div>
+        <div class="benefit-card">
+          <app-icon [name]="'heart'" [size]="32" [color]="'#7c3aed'"></app-icon>
+          <h3>Health & Wellness</h3>
+          <p>Comprehensive health insurance and wellness programs.</p>
+        </div>
+        <div class="benefit-card">
+          <app-icon [name]="'users'" [size]="32" [color]="'#7c3aed'"></app-icon>
+          <h3>Amazing Team</h3>
+          <p>Collaborate with world-class engineers and designers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="positions-section">
+      <h2>Open Positions</h2>
+      <div class="positions-list">
+        <div class="position-card" *ngFor="let position of openPositions">
+          <div class="position-info">
+            <h3>{{ position.title }}</h3>
+            <div class="position-meta">
+              <span><app-icon [name]="'briefcase'" [size]="16"></app-icon> {{ position.department }}</span>
+              <span><app-icon [name]="'map-pin'" [size]="16"></app-icon> {{ position.location }}</span>
+              <span><app-icon [name]="'clock'" [size]="16"></app-icon> {{ position.type }}</span>
+            </div>
+          </div>
+          <a href="mailto:careers&#64;aiimagestudio.com" class="apply-btn">
+            Apply Now
+            <app-icon [name]="'arrow-right'" [size]="16"></app-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

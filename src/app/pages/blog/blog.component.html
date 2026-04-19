@@ -1,0 +1,39 @@
+<section class="blog-hero">
+  <div class="hero-bg-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="badge-dot"></span>Blog</div>
+      <h1>AI Image Studio <span class="text-gradient">Blog</span></h1>
+      <p class="hero-subtitle">Tips, tutorials, and insights about AI-powered image editing and creation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-grid">
+      <article class="blog-card" *ngFor="let post of blogPosts">
+        <div class="blog-card-image">
+          <div class="image-placeholder">
+            <app-icon [name]="'image'" [size]="48" [color]="'#7c3aed'"></app-icon>
+          </div>
+        </div>
+        <div class="blog-card-content">
+          <div class="blog-meta">
+            <span class="blog-category">{{ post.category }}</span>
+            <span class="blog-date">{{ post.date }}</span>
+          </div>
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.excerpt }}</p>
+          <div class="blog-footer">
+            <span class="read-time">{{ post.readTime }}</span>
+            <a href="javascript:void(0)" class="read-more">
+              Read More
+              <app-icon [name]="'arrow-right'" [size]="16"></app-icon>
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

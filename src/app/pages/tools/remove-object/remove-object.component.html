@@ -1,0 +1,77 @@
+<!-- Remove Object Tool -->
+<div class="tool-page">
+  <div class="tool-header">
+    <div class="tool-icon-large">✂️</div>
+    <div class="section-label">Remove Object</div>
+    <h1>Remove <span class="text-gradient">Object</span></h1>
+    <p>Select and erase any unwanted object from your photos. AI seamlessly fills the area with matching background content.</p>
+  </div>
+
+  <div class="tool-workspace">
+    <!-- Upload Zone -->
+    <div *ngIf="!previewUrl()" class="upload-zone" [class.drag-over]="dragOver()"
+         (dragover)="$event.preventDefault(); dragOver.set(true)"
+         (dragleave)="dragOver.set(false)"
+         (drop)="onDrop($event)">
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" #fileInput>
+      <span class="upload-icon">📤</span>
+      <p class="upload-text">Drop your image here or <strong style="color:#a78bfa">click to browse</strong></p>
+      <p class="upload-subtext">Supports JPG, PNG, WebP · Max 10MB</p>
+    </div>
+
+    <!-- Preview & Process -->
+    <div *ngIf="previewUrl() && !resultUrl()" class="preview-section">
+      <div class="image-preview-card">
+        <div class="preview-label">Original Image</div>
+        <img [src]="previewUrl()" alt="Preview" class="preview-img">
+        
+        
+
+        <div class="preview-actions">
+          <button class="btn-primary" (click)="process()" [disabled]="isProcessing()">
+            <span *ngIf="!isProcessing()">✨ Process Image</span>
+            <span *ngIf="isProcessing()" class="flex-center gap-8">
+              <span class="spinner-ring small"></span> Processing...
+            </span>
+          </button>
+          <button class="btn-secondary" (click)="reset()">Change Image</button>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="error()" class="error-banner">⚠️ {{ error() }}</div>
+
+    <div *ngIf="isProcessing()" class="processing-overlay">
+      <div class="spinner-ring"></div>
+      <p class="processing-text">AI is working on your image...</p>
+      <p style="font-size:0.8rem;color:#64748b">This may take 10-30 seconds</p>
+    </div>
+
+    <!-- Result -->
+    <div *ngIf="resultUrl()" class="result-section">
+      <div class="result-container">
+        <div class="result-header">
+          <h3>✅ Processing Complete</h3>
+          <div class="result-actions">
+            <button class="btn-outline" (click)="reset()">Start Over</button>
+            <button class="btn-primary" (click)="download()">
+              ⬇️ Download Result
+            </button>
+          </div>
+        </div>
+        
+        <div class="image-compare">
+          <div class="image-compare-item">
+            <div class="image-compare-label">Before</div>
+            <img [src]="previewUrl()" alt="Original">
+          </div>
+          <div class="image-compare-item">
+            <div class="image-compare-label">After</div>
+            <img [src]="resultUrl()" alt="Processed">
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

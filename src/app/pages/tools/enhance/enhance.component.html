@@ -1,0 +1,87 @@
+<!-- Image Enhancement Tool -->
+<div class="tool-page">
+  <div class="tool-header">
+    <app-icon [name]="'sparkles'" [size]="48" class="tool-icon-large"></app-icon>
+    <div class="section-label">AI Enhancement</div>
+    <h1>Image <span class="text-gradient">Enhancement</span></h1>
+    <p>Upscale and sharpen your images with AI. Increase resolution up to 4x while preserving fine details and eliminating blur.</p>
+  </div>
+
+  <div class="tool-workspace">
+    <!-- Upload Zone -->
+    <div *ngIf="!previewUrl()" class="upload-zone" [class.drag-over]="dragOver()"
+         (dragover)="$event.preventDefault(); dragOver.set(true)"
+         (dragleave)="dragOver.set(false)"
+         (drop)="onDrop($event)">
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" #fileInput>
+      <app-icon [name]="'upload-cloud'" [size]="48" class="upload-icon"></app-icon>
+      <p class="upload-text">Drop your image here or <strong style="color:#a78bfa">click to browse</strong></p>
+      <p class="upload-subtext">Supports JPG, PNG, WebP · Max 10MB</p>
+    </div>
+
+    <!-- Preview & Process -->
+    <div *ngIf="previewUrl() && !resultUrl()" class="preview-section">
+      <div class="image-preview-card">
+        <div class="preview-label">Original Image</div>
+        <img [src]="previewUrl()" alt="Preview" class="preview-img">
+        <div class="preview-actions">
+          <button class="btn-primary" (click)="process()" [disabled]="isProcessing()">
+            <span *ngIf="!isProcessing()" class="flex-center gap-8">
+              <app-icon [name]="'sparkles'" [size]="16"></app-icon>
+              Enhance Image
+            </span>
+            <span *ngIf="isProcessing()" class="flex-center gap-8">
+              <span class="spinner-ring small"></span> Processing...
+            </span>
+          </button>
+          <button class="btn-secondary" (click)="reset()">Change Image</button>
+        </div>
+      </div>
+
+      <div *ngIf="error()" class="error-banner">
+        <app-icon [name]="'alert-circle'" [size]="16"></app-icon>
+        {{ error() }}
+      </div>
+
+      <div *ngIf="isProcessing()" class="processing-overlay">
+        <div class="spinner-ring"></div>
+        <p class="processing-text">AI is enhancing your image...</p>
+        <p style="font-size:0.8rem;color:#64748b">This may take 10-30 seconds</p>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div *ngIf="resultUrl()" class="result-section">
+      <div class="result-container">
+        <div class="result-header">
+          <h3>
+            <app-icon [name]="'check-circle'" [size]="20"></app-icon>
+            Enhancement Complete
+          </h3>
+          <div class="result-actions">
+            <button class="btn-outline" (click)="reset()">Process Another</button>
+            <button class="btn-primary" (click)="download()">
+              <app-icon [name]="'download'" [size]="16"></app-icon>
+              Download Result
+            </button>
+          </div>
+        </div>
+        <div class="image-compare">
+          <div class="image-compare-item">
+            <div class="image-compare-label">Before</div>
+            <img [src]="previewUrl()" alt="Original">
+          </div>
+          <div class="image-compare-item">
+            <div class="image-compare-label">After (Enhanced)</div>
+            <img [src]="resultUrl()" alt="Enhanced">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="error() && !previewUrl()" class="error-banner">
+      <app-icon [name]="'alert-circle'" [size]="16"></app-icon>
+      {{ error() }}
+    </div>
+  </div>
+</div>

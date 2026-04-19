@@ -1,0 +1,57 @@
+<div class="generator-wrapper" id="generator">
+  <div class="container">
+    <div class="generator-header">
+      <h2 class="text-gradient">Bring Your Imagination to Life</h2>
+      <p>Describe what you want to see, and our AI will create it in seconds.</p>
+    </div>
+
+    <div class="generator-box glass-panel">
+      <div class="input-group">
+        <input 
+          type="text" 
+          [(ngModel)]="prompt" 
+          (keyup.enter)="generateImage()"
+          placeholder="A futuristic city with flying cars at sunset..."
+          [disabled]="isLoading()"
+          class="prompt-input"
+        >
+        <button 
+          class="btn-primary generate-btn" 
+          (click)="generateImage()"
+          [disabled]="isLoading() || !prompt()"
+        >
+          <span *ngIf="!isLoading()">Generate</span>
+          <span *ngIf="isLoading()" class="loader-text">
+            <span class="spinner"></span> Generating...
+          </span>
+        </button>
+      </div>
+
+      <div class="error-banner" *ngIf="errorMessage()">
+        {{ errorMessage() }}
+      </div>
+
+      <div class="result-area" [class.has-image]="generatedImageUrl()">
+        
+        <div class="placeholder" *ngIf="!generatedImageUrl() && !isLoading()">
+          <div class="icon-placeholder">✨</div>
+          <p>Your generated image will appear here</p>
+        </div>
+
+        <div class="loading-state" *ngIf="isLoading()">
+          <div class="pulsing-box"></div>
+        </div>
+
+        <div class="image-wrapper" *ngIf="generatedImageUrl() && !isLoading()">
+          <img [src]="generatedImageUrl()" alt="Generated AI Image" class="result-image">
+          <div class="image-overlay">
+            <button class="action-btn" (click)="downloadImage()" title="Open Original">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

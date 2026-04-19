@@ -1,0 +1,35 @@
+.not-found-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-card {
+  text-align: center;
+  max-width: 500px;
+  padding: 60px 40px;
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 16px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.error-message {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.error-description {
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 12px 32px;
+}

@@ -1,0 +1,137 @@
+<header class="header" [class.scrolled]="scrolled()">
+  <div class="header-inner container">
+    <!-- Logo -->
+    <a routerLink="/" class="logo" (click)="closeMenu()">
+      <div class="logo-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="logoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#10b981"/>
+              <stop offset="100%" stop-color="#06b6d4"/>
+            </linearGradient>
+          </defs>
+          <rect width="32" height="32" rx="8" fill="url(#logoGrad)"/>
+          <circle cx="16" cy="13" r="5" fill="white" opacity="0.9"/>
+          <path d="M6 24 C8 18, 24 18, 26 24" stroke="white" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.9"/>
+          <circle cx="24" cy="10" r="2" fill="white" opacity="0.6"/>
+          <circle cx="8" cy="10" r="1.5" fill="white" opacity="0.6"/>
+        </svg>
+      </div>
+      <span class="logo-text">AI <span class="text-gradient">Studio</span></span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="desktop-nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+        <app-icon name="home" [size]="16"></app-icon>
+        Home
+      </a>
+      <a routerLink="/pricing" routerLinkActive="active" class="nav-link">
+        <app-icon name="credit-card" [size]="16"></app-icon>
+        Pricing
+      </a>
+      
+      <!-- Mega Menu Dropdown -->
+      <div class="dropdown-wrapper" (mouseenter)="toolsOpen.set(true)" (mouseleave)="toolsOpen.set(false)">
+        <button class="nav-link dropdown-trigger" [class.active]="toolsOpen()">
+          <app-icon name="sparkles" [size]="16"></app-icon>
+          AI Tools
+          <app-icon name="chevron-down" [size]="14" [cssClass]="'chevron ' + (toolsOpen() ? 'rotated' : '')"></app-icon>
+        </button>
+        <div class="mega-menu" [class.open]="toolsOpen()">
+          <div class="mega-menu-grid">
+            <div class="mega-menu-column" *ngFor="let category of toolCategories">
+              <div class="mega-menu-header">
+                <app-icon [name]="category.icon" [size]="16"></app-icon>
+                <h4>{{ category.category }}</h4>
+              </div>
+              <a *ngFor="let tool of category.tools" 
+                 [routerLink]="tool.route" 
+                 class="mega-menu-item" 
+                 (click)="closeMenu()">
+                <div class="mega-menu-icon" [style.background]="getToolColor(tool.route) + '15'">
+                  <app-icon [name]="tool.icon" [size]="18"></app-icon>
+                </div>
+                <div class="mega-menu-text">
+                  <div class="mega-menu-name">{{ tool.name }}</div>
+                  <div class="mega-menu-desc">{{ tool.desc }}</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a routerLink="/about" routerLinkActive="active" class="nav-link">
+        <app-icon name="info" [size]="16"></app-icon>
+        About
+      </a>
+      <a routerLink="/contact" routerLinkActive="active" class="nav-link">
+        <app-icon name="mail" [size]="16"></app-icon>
+        Contact
+      </a>
+    </nav>
+
+    <!-- CTA -->
+    <div class="header-actions desktop-nav">
+      <a routerLink="/tools/designer" class="btn-primary header-cta">
+        <app-icon name="palette" [size]="16"></app-icon>
+        Try AI Tools
+      </a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button class="menu-toggle" (click)="toggleMenu()" aria-label="Toggle Menu">
+      <div class="hamburger" [class.open]="menuOpen()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="menuOpen()">
+    <div class="mobile-menu-inner">
+      <a routerLink="/" class="mobile-link" (click)="closeMenu()">
+        <app-icon name="home" [size]="18"></app-icon>
+        Home
+      </a>
+      
+      <div class="mobile-section-title">AI Tools</div>
+      <div class="mobile-tools-list">
+        <div class="mobile-category" *ngFor="let category of toolCategories">
+          <div class="mobile-category-title">
+            <app-icon [name]="category.icon" [size]="14"></app-icon>
+            {{ category.category }}
+          </div>
+          <a *ngFor="let tool of category.tools" 
+             [routerLink]="tool.route" 
+             class="mobile-tool-item" 
+             (click)="closeMenu()">
+            <app-icon [name]="tool.icon" [size]="16"></app-icon>
+            <span>{{ tool.name }}</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="mobile-divider"></div>
+      <a routerLink="/about" class="mobile-link" (click)="closeMenu()">
+        <app-icon name="info" [size]="18"></app-icon>
+        About
+      </a>
+      <a routerLink="/pricing" class="mobile-link" (click)="closeMenu()">
+        <app-icon name="credit-card" [size]="18"></app-icon>
+        Pricing
+      </a>
+      <a routerLink="/contact" class="mobile-link" (click)="closeMenu()">
+        <app-icon name="mail" [size]="18"></app-icon>
+        Contact
+      </a>
+      <a routerLink="/tools/designer" class="btn-primary mobile-cta" (click)="closeMenu()">
+        <app-icon name="palette" [size]="16"></app-icon>
+        Try AI Tools Free
+      </a>
+    </div>
+  </div>
+</header>

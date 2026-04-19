@@ -1,0 +1,179 @@
+<!-- ======================================================
+  HERO SECTION
+======================================================= -->
+<section class="about-hero">
+  <div class="hero-bg-grid"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        About AI Image Studio
+      </div>
+      <h1>Empowering Creativity Through <span class="text-gradient">Artificial Intelligence</span></h1>
+      <p class="hero-subtitle">
+        We're on a mission to make professional image editing accessible to everyone. Our AI-powered tools transform how creators, designers, and businesses work with images.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+  MISSION & VISION
+======================================================= -->
+<section class="mission-section">
+  <div class="container">
+    <div class="mission-grid">
+      <div class="mission-card">
+        <div class="mission-icon">
+          <app-icon [name]="'target'" [size]="32" [color]="'#7c3aed'"></app-icon>
+        </div>
+        <h2>Our Mission</h2>
+        <p>At AI Image Studio, we believe that everyone has an artist within. Our mission is to bridge the gap between imagination and creation by providing accessible, state-of-the-art AI image tools. We strive to empower designers, marketers, and creators of all skill levels to bring their visions to life instantly.</p>
+      </div>
+
+      <div class="mission-card">
+        <div class="mission-icon">
+          <app-icon [name]="'eye'" [size]="32" [color]="'#06b6d4'"></app-icon>
+        </div>
+        <h2>Our Vision</h2>
+        <p>We envision a world where creative expression is limited only by imagination, not technical skills or expensive software. By democratizing AI-powered image editing, we're building a future where anyone can create professional-quality visuals in seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+  STATS SECTION
+======================================================= -->
+<section class="stats-section">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item" *ngFor="let stat of stats">
+        <div class="stat-icon">
+          <app-icon [name]="stat.icon" [size]="24" [color]="'#7c3aed'"></app-icon>
+        </div>
+        <div class="stat-value text-gradient">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+  PRODUCT OVERVIEW
+======================================================= -->
+<section class="product-section">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-label">
+        <app-icon [name]="'sparkles'" [size]="16"></app-icon>
+        Product Overview
+      </div>
+      <h2>What is <span class="text-gradient">AI Image Studio</span>?</h2>
+      <p>A comprehensive suite of 12 professional AI-powered tools designed to transform, enhance, and create stunning images without any design expertise.</p>
+    </div>
+
+    <div class="product-features">
+      <div class="product-feature" *ngFor="let feature of features">
+        <div class="feature-icon-wrapper">
+          <app-icon [name]="feature.icon" [size]="28" [color]="'#7c3aed'"></app-icon>
+        </div>
+        <div class="feature-content">
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+  WHY CHOOSE US
+======================================================= -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-label">
+        <app-icon [name]="'award'" [size]="16"></app-icon>
+        Why Choose Us
+      </div>
+      <h2>The <span class="text-gradient">AI Advantage</span></h2>
+      <p>What makes AI Image Studio the preferred choice for over 500,000 creators worldwide.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-number">01</div>
+        <h3>No Learning Curve</h3>
+        <p>Our intuitive interface requires zero training. Upload your image and get professional results in seconds.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-number">02</div>
+        <h3>100% Browser-Based</h3>
+        <p>No downloads, no installations. Works on any device with a modern browser — desktop, tablet, or mobile.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-number">03</div>
+        <h3>Enterprise-Grade Security</h3>
+        <p>Your images are processed securely and never stored. Full GDPR compliance and data privacy guaranteed.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-number">04</div>
+        <h3>Continuous Innovation</h3>
+        <p>We constantly upgrade our AI models with the latest research to deliver cutting-edge results.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+  TEAM SECTION
+======================================================= -->
+<section class="team-section">
+  <div class="container">
+    <div class="section-title">
+      <div class="section-label">
+        <app-icon [name]="'users'" [size]="16"></app-icon>
+        Our Team
+      </div>
+      <h2>Meet the <span class="text-gradient">Experts</span></h2>
+      <p>A world-class team of AI researchers, engineers, and designers passionate about democratizing creativity.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-member" *ngFor="let member of teamMembers">
+        <div class="member-avatar">{{ member.avatar }}</div>
+        <h3>{{ member.name }}</h3>
+        <p>{{ member.role }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+  CTA SECTION
+======================================================= -->
+<section class="about-cta-section">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-orb cta-orb-1"></div>
+      <div class="cta-orb cta-orb-2"></div>
+      <div class="cta-content">
+        <h2>Ready to Transform Your Images?</h2>
+        <p>Join over 500,000 creators using AI Image Studio. Start free — no credit card required.</p>
+        <div class="cta-actions">
+          <a routerLink="/tools/remove-bg" class="btn-primary cta-btn">
+            Get Started Free
+            <app-icon [name]="'arrow-right'" [size]="16"></app-icon>
+          </a>
+          <a routerLink="/tools/designer" class="btn-secondary">
+            Try AI Designer
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
